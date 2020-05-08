@@ -36,6 +36,7 @@ const PEOPLE = {
 }
 
 const PUBLICATIONS = [{
+  image: 'assets/paper-thumbnails/zhang20-thumb.png',
   title: 'Path-Space Differentiable Rendering',
   authors: [
     'cheng-zhang',
@@ -44,9 +45,10 @@ const PUBLICATIONS = [{
     'ioannis-gkioulekas',
     'shuang-zhuo',
   ],
-  image: 'assets/paper-thumbnails/zhang20-thumb.png',
-  paper: 'https://baileymiller-personal-page.s3.us-east-2.amazonaws.com/papers/singh17-paper.pdf',
+  venue: 'ACM Transactions on Graphics (Proceedings of <b>SIGGRAPH</b>), 39(4), July 2020',
+  paper: 'https://baileymiller-personal-page.s3.us-east-2.amazonaws.com/papers/zhang20-paper.pdf',
 }, {
+  image: 'assets/paper-thumbnails/miller19-thumb.png',
   title: 'A null-scattering path integral formulation of light transport',
   authors: [
     'bailey-miller',
@@ -54,18 +56,19 @@ const PUBLICATIONS = [{
     'wojciech-jarosz',
   ],
   joint: ['bailey-miller', 'iliyan-georgiev'],
-  image: 'assets/paper-thumbnails/miller19-thumb.png',
+  venue: 'ACM Transactions on Graphics (Proceedings of <b>SIGGRAPH</b>), 38(4), July 2019.',
   paper: 'https://baileymiller-personal-page.s3.us-east-2.amazonaws.com/papers/miller19-paper.pdf',
   publisher: 'https://dl.acm.org/doi/10.1145/3306346.3323025',
 }, {
+  image: 'assets/paper-thumbnails/singh17-thumb.png',
   title: 'Variance and convergence analysis of Monte Carlo line and segment sampling',
   authors: [
     'gurprit-singh',
     'bailey-miller',
     'wojciech-jarosz',
   ],
-  image: 'assets/paper-thumbnails/singh17-thumb.png',
-  paper: 'https://baileymiller-personal-page.s3.us-east-2.amazonaws.com/papers/zheng20-paper.pdf',
+  venue: 'Computer Graphics Forum (Proceedings of EGSR), 36(4), June 2017.',
+  paper: 'https://baileymiller-personal-page.s3.us-east-2.amazonaws.com/papers/singh17-paper.pdf',
   publisher: 'https://onlinelibrary.wiley.com/doi/abs/10.1111/cgf.13226',
 }]
 
@@ -92,6 +95,13 @@ function getAuthors(pub) {
   return `<span> ${authorNames} </span>`
 }
 
+function getVenue(pub) {
+  return `
+  <div>
+    <i>${pub.venue}</i>
+  </div>
+  `
+}
 function getProjectPage(pub) {
   if (!_.has(pub, 'projectPage')) return ''
 }
@@ -137,6 +147,7 @@ _.each(PUBLICATIONS, pub => {
         <div class="d-flex flex-column pl-4">
           <h5>${pub.title}</h5>
           ${getAuthors(pub)}
+          ${getVenue(pub)}
           <div class="d-flex flex-row justify-content-start pt-2">
             ${getProjectPage(pub)}
             ${getPaper(pub)}
