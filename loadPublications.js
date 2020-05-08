@@ -56,7 +56,7 @@ const PUBLICATIONS = [{
     'iliyan-georgiev',
     'wojciech-jarosz',
   ],
-  joint: ['bailey-miller', 'iliyan-georgiev'],
+  joint_authors: ['bailey-miller', 'iliyan-georgiev'],
   venue: 'ACM Transactions on Graphics (Proceedings of <b>SIGGRAPH</b>), 38(4), July 2019.',
   project: 'https://cs.dartmouth.edu/~wjarosz/publications/miller19null.html',
   paper: 'https://baileymiller-personal-page.s3.us-east-2.amazonaws.com/papers/miller19-paper.pdf',
@@ -79,15 +79,21 @@ function getAuthors(pub) {
   let authorNames = ''
   const numAuthors = _.size(pub.authors)
   _.each(pub.authors, (id, index) => {
+    let name = PEOPLE[id].name
+    if (_.includes(_.get(pub, 'joint_authors', []), id)) {
+      name += "*"
+    }
+
     if (id === ME) {
-      authorNames += `<b>${PEOPLE[id].name}</b>`
+      authorNames += `<b>${name}</b>`
     }
     else if (!_.isNil(PEOPLE[id].website)) {
-      authorNames += `<a href="${PEOPLE[id].website}">${PEOPLE[id].name}</a>`
+      authorNames += `<a href="${PEOPLE[id].website}">${name}</a>`
     }
     else {
-      authorNames += PEOPLE[id].name
+      authorNames += name
     }
+
     if (index < numAuthors - 1) {
       authorNames += ', '
     }
@@ -95,7 +101,7 @@ function getAuthors(pub) {
       authorNames += 'and '
     }
   })
-  return `<span> ${authorNames} </span>`
+  return `<div>${authorNames}</div>`
 }
 
 function getVenue(pub) {
