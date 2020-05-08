@@ -1,0 +1,14 @@
+.profile-row {
+  margin-bottom: 8px;
+  padding-bottom: 0px;
+}
+
+.publication-thumbnail {
+  width: 120px;
+  height: 120px;
+}
+
+#profile-pic {
+  height: 250px;
+  display: block;
+}
