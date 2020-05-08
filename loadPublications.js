@@ -46,6 +46,7 @@ const PUBLICATIONS = [{
     'shuang-zhuo',
   ],
   venue: 'ACM Transactions on Graphics (Proceedings of <b>SIGGRAPH</b>), 39(4), July 2020',
+  project: 'https://shuangz.com/projects/psdr-sg20/',
   paper: 'https://baileymiller-personal-page.s3.us-east-2.amazonaws.com/papers/zhang20-paper.pdf',
 }, {
   image: 'assets/paper-thumbnails/miller19-thumb.png',
@@ -57,6 +58,7 @@ const PUBLICATIONS = [{
   ],
   joint: ['bailey-miller', 'iliyan-georgiev'],
   venue: 'ACM Transactions on Graphics (Proceedings of <b>SIGGRAPH</b>), 38(4), July 2019.',
+  project: 'https://cs.dartmouth.edu/~wjarosz/publications/miller19null.html',
   paper: 'https://baileymiller-personal-page.s3.us-east-2.amazonaws.com/papers/miller19-paper.pdf',
   publisher: 'https://dl.acm.org/doi/10.1145/3306346.3323025',
 }, {
@@ -68,6 +70,7 @@ const PUBLICATIONS = [{
     'wojciech-jarosz',
   ],
   venue: 'Computer Graphics Forum (Proceedings of EGSR), 36(4), June 2017.',
+  project: 'https://cs.dartmouth.edu/~wjarosz/publications/singh17variance.html',
   paper: 'https://baileymiller-personal-page.s3.us-east-2.amazonaws.com/papers/singh17-paper.pdf',
   publisher: 'https://onlinelibrary.wiley.com/doi/abs/10.1111/cgf.13226',
 }]
@@ -103,7 +106,13 @@ function getVenue(pub) {
   `
 }
 function getProjectPage(pub) {
-  if (!_.has(pub, 'projectPage')) return ''
+  if (!_.has(pub, 'project')) return ''
+  return `
+    <div class="pr-3">
+      <i class="fas fa-globe"></i>
+      <a href=${pub.project}>project page</a>
+    </div>
+  `
 }
 
 function getPaper(pub) {
@@ -126,16 +135,6 @@ function getPublisherVersion(pub) {
   `
 }
 
-function getCitation(pub) {
-  if (!_.has(pub, 'citation')) return ''
-  return `
-    <div class="pr-3">
-      <i class="fas fa-quote-left"></i>
-      cite (bib)
-    </div>
-  `
-}
-
 _.each(PUBLICATIONS, pub => {
   const pubHTML =
     `
@@ -152,7 +151,6 @@ _.each(PUBLICATIONS, pub => {
             ${getProjectPage(pub)}
             ${getPaper(pub)}
             ${getPublisherVersion(pub)}
-            ${getCitation(pub)}
           </div>
         </div>
       </div>
