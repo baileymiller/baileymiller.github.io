@@ -48,6 +48,7 @@ const PUBLICATIONS = [{
   venue: 'ACM Transactions on Graphics (Proceedings of <b>SIGGRAPH</b>), 39(4), July 2020',
   project: 'https://shuangz.com/projects/psdr-sg20/',
   paper: 'https://baileymiller-personal-page.s3.us-east-2.amazonaws.com/papers/zhang20-paper.pdf',
+  publisher: 'https://dl.acm.org/doi/abs/10.1145/3386569.3392383'
 }, {
   image: 'assets/paper-thumbnails/miller19-thumb.png',
   title: 'A null-scattering path integral formulation of light transport',
