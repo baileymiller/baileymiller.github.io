@@ -1,3 +1,7 @@
+body {
+  padding-bottom: 50px;
+}
+
 #profile-pic {
   height: 250px;
   display: block;
